@@ -54,13 +54,12 @@ app.use(passport.session())
 passport.use(new LocalStrategy({ usernameField: 'email' }, User.authenticate()));
 passport.serializeUser(User.serializeUser())
 passport.deserializeUser(User.deserializeUser())
-//middleware
+//middleware of flash
 app.use((req,res,next)=>{
   res.locals.success = req.flash("success")
   res.locals.error = req.flash("error")
   res.locals.delet = req.flash("delete")
   res.locals.currUser = req.user;
-  // console.log(res.locals.success)
   next()
 })
 app.use("/listings", listingsRouter);
@@ -69,7 +68,7 @@ app.use("/", userRouter);
 app.use((err, req, res, next) => {
   let { status = 500, message = "Some Thing Went Wrong" } = err;
   console.log("______ERROR________", err)
-  res.status(status).send(message); // ya res.render("errorHandler", { err });
+  res.status(status).send(message); 
 })
 app.listen(8080, () => {
   console.log("server is listening to port 8080");
