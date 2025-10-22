@@ -1,0 +1,118 @@
+<%- layout("/layouts/boilerplate") -%>
+
+  <div class="row top-margin-div">
+    <div class="col-8  ">
+      <h3 class="fs-5 my-3  text-nowrap">
+        <%= listing.title %>
+      </h3>
+    </div>
+
+    <div class="card col-8 max-md:w-[100%]">
+      <img src="<%=listing.image.url %><%=listing.image %>" class="card-img-top show-image max-sm:w-[100%]"
+        alt="Listing image" />
+      <div class="card-img-overlay"></div>
+      <div class="card-body">
+        <div class="card-text">
+          <p class="fs-4  flex gap-2  fw-normal font-[sans-serif]">
+            <span class="font-[fantasy] fs-3">Place name :</span>
+            <%= listing.title %>
+          </p>
+          <p class="fs-2  flex gap-2  "><span class="font-[fantasy] fs-3">Place price :</span> &#8360; <%= listing.price
+              %>
+          </p>
+          <hr>
+          <p class="fs-6 flex-col mt-5  flex gap-y-2  ">
+            <span class="fs-3 font-[fantasy] ">Place details :</span>
+            <%= listing.description %>
+          </p>
+          <p class="fs-3  flex gap-2  ">
+            <span class="font-[fantasy] fs-3">City name : </span>
+            <%= listing.location %>
+          </p>
+          <p class="fs-3 flex gap-2 ">
+            <span class="font-[fantasy] fs-3">Country name :</span>
+            <%= listing.country%>
+          </p>
+
+        </div>
+      </div>
+      <div class="btns d-flex gap-3 mt-[30px]">
+        <a href="/listings/<%= listing._id %>/edit" class="btn btn-outline-danger text-nowrap" style="z-index: 10;">Edit
+          this
+          Listing</a>
+
+        <form method="POST" action="/listings/<%=listing._id%>?_method=DELETE" style="z-index: 10;">
+          <button class="btn  btn-outline-danger text-nowrap">Delete this listing</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="col-8 offset-2 mb-3 mt-3">
+    <h4>Leave a Review</h4>
+    <form action="/listings/<%=listing._id%>/reviews" method="post" class="needs-validation" novalidate>
+
+      <div class="mb-2">
+        <label for="rating">Rating</label>
+        <!-- <input type="range" class="form-label form-range"  min="1" max="5" id="rating" name="review[rating]"> -->
+        <input type="range" class="form-range" min="1" max="5" id="rating" name="review[rating]" required>
+        <output for="range4" id="rangeValue" aria-hidden="true"></output>
+      </div>
+      <div class="form-floating">
+        <textarea required name="review[comment]" id="comment" cols="30" rows="5" class="form-control"></textarea>
+        <label for="comment" for="floatingTextarea">Comments</label>
+        <div class="invalid-feedback">Please submit</div>
+        <div class="valid-feedback">Thanks for review</div>
+      </div>
+
+      <button class="btn  btn-outline-danger mt-3">Submit</button>
+    </form>
+    <hr>
+    <h4 class="align-text-center d-inline-block">Total Reviews
+      <% if (listingCount && listingCount> 0) { %>
+        <p class="d-inline-block">Count - <%= listingCount %>
+        </p>
+        <% }else{ %>
+          <%= listingCount %>
+            <% } %>
+    </h4>
+
+    <div class="row">
+      <% for(review of listing.reviews){ %>
+        <div class="card col-6 mb-3 ">
+          <div class="card-body border">
+            <div class="card-title border-bottom text-danger">John Dere</div>
+            <p class="card-text">
+              <%=review.comment %>
+            </p>
+            <p class="card-text flex  fs-3 items-center gap-1">
+              <span class="fs-4 font-[fantasy]">Rating star : </span>
+            <!-- <div class="star-div flex gap-2 fs-4"> -->
+              <% for (let i=0; i < review.rating; i++) { %>
+                <i class="fa-solid fa-star text-warning hover:scale-120 duration-300 hover:translate-y-[20px] hover:text-[orange]"></i>
+                <% } %>
+            <!-- </div> -->
+            </p>
+            <form action="/listings/<%=listing._id%>/reviews/<%=review._id%>?_method=DELETE" class="m-0 p-0"
+              method="post"><button class="btn btn-sm btn-outline-danger">Delete</button>
+            </form>
+          </div>
+        </div>
+
+        <% }%>
+    </div>
+  </div>
+
+  <script>
+    // This is an example script, please modify as needed
+    const rangeInput = document.getElementById('rating');
+    const rangeOutput = document.getElementById('rangeValue');
+
+    // Set initial value
+    rangeOutput.textContent = rangeInput.value;
+
+    rangeInput.addEventListener('input', function () {
+      rangeOutput.textContent = this.value;
+    }); 
+  </script>
+  </body>

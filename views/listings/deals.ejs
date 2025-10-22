@@ -1,0 +1,51 @@
+<%- layout("/layouts/boilerplate") -%>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <div class="top-margin-div ">
+        <h3 class="text-start">Deals are available for low-priced hotels.</h3>
+        <p>
+            Our hotels offer exceptional comfort, modern facilities, and top-quality service — all at affordable prices.
+            Whether you're traveling for business or leisure, you’ll enjoy a relaxing stay with clean rooms, friendly
+            staff, and a welcoming atmosphere.
+        </p>
+        <hr class="">
+        <div class="cards-div flex flex-wrap justify-start gap-5">
+            <% data.map((d)=>{ %>
+                <% if(d.price < 1500 ){ %>
+                    <a href="/listings/<%= d._id %>" class="a-link">
+                        <div class="card a-div">
+                            <img src="<%=d.image.url %><%=d.image %>" class="card-img-top images-db" alt="Listing image"
+                                style="height: 14rem;" />
+                            <div class="card-img-overlay absolute flex justify-end top-[25px]  w-[100%] h-[15px] ">
+                                <span class=" rounded-[50%]  ">
+                                    <a href="/listings/liked/<%= d._id %>">
+                                        <!-- <i class="fa-regular fa-heart  text-[1.4rem]  hover:text-[4rem] hover:translate-y-[-30px] transition duration-200 ease-in  hover:blur-[2px] transition-transform font-semibold text-[red]"></i> -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round"
+                                            class="shadow-[0_0_2px_5px_white]  text-[1rem] text-[black] bg-[white] rounded-[50%]  hover:scale-120 transition duration-200 ease-in   transition-transform font-semibold"
+                                            aria-hidden="true">
+                                            <path
+                                                d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5">
+                                            </path>
+                                        </svg>
+                                    </a>
+                                </span>
+                            </div>
+                            <div class="card-body ">
+                                <div class="card-text max-sm:text-[1.5rem] flex flex-col gap-y-2 ">
+                                    <a href="/listings/<%= d._id %>">
+                                        <%= d.title %>
+                                    </a>
+                                    <p> &#8360; <%= d.price.toLocaleString("en-PK") %> / 2 night
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <% } %>
+
+                        <% }) %>
+        </div>
+    </div>

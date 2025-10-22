@@ -1,0 +1,65 @@
+<%- layout("/layouts/boilerplate") -%>
+    <div class="index-main-div max-sm:mt-[80px]">
+        <h3 class="text-start   text-[20px] mt-[30px] mb-[30px] uppercase">Favourited Listing - <span
+                class="text-[2.7rem]">
+                <%= likedCount %>
+            </span></h3>
+        <% if (likedCount===0) { %>
+            <div class="text-center mt-10">
+                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-heart mx-auto mb-6 text-gray-400">
+                    <path
+                        d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5">
+                    </path>
+                </svg>
+                <h2 class="text-lg font-semibold">Your Wishlist is Empty</h2>
+                <p class="text-gray-500 mb-4">
+                    Save your favorite items here to keep track of them and purchase later!
+                </p>
+                <a href="/listings" class="btn btn-danger bg-[#FF385C] text-white">Start Listing</a>
+            </div>
+            <% } %>
+
+                <div class="flex flex-wrap max-sm:w-[100%] justify-start gap-5 max-lg:justify-center max-lg:mt-[20px]">
+                    <% for(let list of listings) { %>
+                        <a href="/listings/<%= list._id %>" class="a-link relative">
+                            <div class="card max-sm:w-[100%] a-div">
+                                <img src="<%=list.image.url %><%=list.image %>"
+                                    class="rounded-[31px] max-sm:w-[100%] images-db" alt="Listing image"
+                                    style="height: 14rem;" />
+                                <div class="card-img-overlay absolute flex justify-end top-[25px]  w-[100%] h-[15px] ">
+                                    <span class=" rounded-[50%]  ">
+                                        <a href="/listings/disliked/<%= list._id %>">
+                                            <!-- <i
+                                    class="ri-delete-bin-2-fill shadow-[0_0_2px_5px_white]  text-[1.2rem] bg-[white] rounded-[50%]  hover:scale-120 transition duration-200 ease-in   transition-transform font-semibold text-[black]"></i> -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round"
+                                                class="shadow-[0_0_2px_5px_white]  text-[1.2rem] bg-[white] rounded-[50%]  hover:scale-120 transition duration-200 ease-in   transition-transform font-semibold"
+                                                aria-hidden="true">
+                                                <path d="M10 11v6"></path>
+                                                <path d="M14 11v6"></path>
+                                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path>
+                                                <path d="M3 6h18"></path>
+                                                <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                            </svg>
+                                        </a>
+
+                                    </span>
+                                </div>
+                                <div class="card-body">
+                                    <div class="card-text">
+                                        <a href="/listings/<%= list._id %>">
+                                            <%= list.title %>
+                                        </a>
+                                        <p> &#8360; <%= list.price.toLocaleString("en-PK") %> / 2 night
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <% } %>
+                </div>
+    </div>

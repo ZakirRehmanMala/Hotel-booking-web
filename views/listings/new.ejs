@@ -1,0 +1,59 @@
+<%- layout("/layouts/boilerplate") %>
+
+  <body>
+    <div class="row top-margin-div">
+      <div class="col-8  top-margin-inner-div">
+        <h3 class="">Create a New Listing</h3>
+        <form method="POST" action="/listings" class="flex flex-col max-sm:w-[100vw] w-[100%] g-3 needs-validation" novalidate>
+          <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input name="listing[title]" class="form-control" placeholder="Add  title" type="text" required />
+            <div class="invalid-feedback">Please fill title! </div>
+            <div class="valid-feedback">Goog title! </div>
+          </div>
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea name="listing[description]" placeholder="Enter description" class="form-control"
+              required></textarea>
+              <div class="invalid-feedback">Please fill short description! </div>
+            <div class="valid-feedback">Amazimg description! </div>
+          </div>
+          <div class="mb-3">
+            <label for="image" class="form-label">Image Link</label>
+            <input name="listing[image]" placeholder="Enter image URL/Link" type="text" class="form-control"  />
+            <div class="valid-feedback tt-uppercase">Already added but you can change! </div>
+            
+          </div>
+          <div class="row">
+            <div class="mb-3 col-md-4">
+              <label for="price" class="form-label">Price</label>
+              <input name="listing[price]" placeholder="Enter sample price" type="text" class="form-control" required
+                min="1" />
+                <div class="valid-feedback">Goog price!</div>
+                <div class="invalid-feedback">Add the price!</div>
+
+            </div>
+            <div class="mb-3 col-md-8">
+              <label for="country" class="form-label">Country</label>
+              <input name="listing[country]" required placeholder="Enter country" type="text" class="form-control" />
+              <div class="valid-feedback">Good country!</div>
+              <div class="invalid-feedback g-2">Put the country!</div>
+
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="location" class="form-label">Location</label>
+            <input required name="listing[location]" placeholder="Enter location" type="text" class="form-control" />
+            <div class="invalid-feedback">Fill location!</div>
+            <div class="valid-feedback">Wonderfull location!</div>
+
+          </div>
+          <div class="mb-3 mt-2 ">
+            <button class="btn btn-md add-btn btn-outline-danger">Add</button>
+
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- <script src="/js/script.js"></script> -->
+  </body>

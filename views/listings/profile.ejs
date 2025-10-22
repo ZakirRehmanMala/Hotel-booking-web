@@ -1,0 +1,79 @@
+<%- layout("/layouts/boilerplate") -%>
+
+<div class="main-profile mt-[100px]">
+  <div class="div-profile flex flex-col gap-3 w-100 justify-center items-center border-bottom border-black pb-[22px] ">
+    <img class="rounded-[50%] w-[200px] " src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACUCAMAAAAj+tKkAAAAP1BMVEWoqa3///+kpamoqav8/PyhoqesrbD4+Pnr6+zz8/Tu7u/T1Na8vb+hoqWxsrS2t7rj4+Td3d7IycrOztDDw8UhP5KLAAAEA0lEQVR4nO2cyXLjMAxERVD7vv3/tw5lx5ETS7ZAoqFMld4tl1QXSYAA1HQUXVxcXFxcXFxcXFxcHMQ6ztbwf/OX14/IqUtvRNb9RWcLeoaSqB6rvsjMjbjIq7FOk7+iMUm6ofzSthKXfe2Enw5RW8W/xX2LHLro5GVs2mFX3o2+O3UV7Qd5yyr26SmLeEso40d5N6YzBC6nrz8kz1FGJ+wz1S+B+2afR9JO4c3B7f3eZs2D6M4fVSx5jkE1VJqBq88lHEWFzcTXZ0ylppC89OntMnV++oyZVbINpYWvwKzVWEN7OD+/kitkQxr99bl0iN9kCtFnTArX55EBn4Fnw45xA28R11h9oQvo4gR7CgNP4AL0FCbsGuGVvgEKJO8cvVIAl5BqXhG4zYgLZH4VuMUA0xdFuYRA4B63EvqM6WACaxmBsEMocwSBiaYROYLuEMIECmTBhbgBTTpJIgsuuP+FqVyF9C1hDBGYigmkPy6wBuWZS2AwUlHcgQRaKYGoaiEJbJgexCB9UVPKCMxQfVMS3NLdyVF3cdjUY6WCtU3ec7ef4Hp3/8HbMzGu5A+ZvK3kMH1ChxA5q24FMmEMu+gimaK/RA7g/OfnKzN0Qhg+nImxX+1oDhWI/miXBp7CogX1Sw9Cl3ACtSPf2CQoWZcNquNcCcmFMW5utBKyyTqftf0n/RqfjG8HyLOyLvDyvuwoqZdCl2G0IK9AQTWb2wrZV16mqW/5qs28UUpdfU4hb+JfpqTuzkym44MGPcPHM8188CBm2BJwH2oOjf2H5iR9STR/tg86+tEiP3DuQTQeTjXF5IJqCRK9QKGUESIL092HqSTQNjP7sisVHCkPqPUqWnOVXG0Xb5nnpDWebv50cMlPaYg1ajFvgZumQFfADA6TZN92fox4wOZEgflbjhsPUisyRS86wmRssjIDVlNgzPMU6itbyRAjQkrF9GG8ovwu5K1C6XNo/TrNfQrhe0/K8PGkUFTg8ZcZx5H7GmGjY6U9F7E7xZKQJeo3o1SFKPF1ZAupaSGJB8iDUiTRSPhW9xiCN9m6G07KqbCFwJ1nYRu8UAbXXsgNXgjPNVh9xgSWXrgIfhAWyTQjI+ROmKNVuIbZIgtaQLy+IJeKhHX/M5l3qvF9P8fFe0AsXUXv4eud1zmBC56TOSnb9GdirzCRcHgcxeszAKIP2SP3aUFlG+H3+Dxm08oxdyr+CpJSjrmT8QUKvb45Cru09nnFHgL7EYzONbzCvZCtyAs6DsxUiBl2vIP7Ql8xS99h9net9g5zX9upFTIrLNuUlCmeA8tAL/XugQOv5tLXZwzDOaVXSz/DOITogcw2jNsuzAbqC+N3NrTauZ8w7HtyX+U4ZJtl9T8q6zdltJ8NOQAAAABJRU5ErkJggg==" alt="">
+  <button class="btn btn-danger w-[200px] ">Profile</button>
+  </div>
+  <div class="bg-white min-h-screen flex flex-col items-center py-10 w-100 ">
+  <!-- Top Buttons -->
+  <div class="flex gap-4 mb-8 justify-evenly w-100 max-sm:flex-wrap ">
+    <button id="profileBtn" 
+      class="w-[300px] flex items-center justify-center max-sm:text-[0.5rem] max-md:w-[100%] tab-btn px-5 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition">
+      Profile
+    </button>
+    <button id="addressBtn" 
+      class="w-[300px] flex items-center justify-center max-sm:text-[0.5rem] max-md:w-[100%] tab-btn px-5 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition">
+      Address Book
+    </button>
+    <button id="bookingBtn" 
+      class="w-[300px] flex items-center justify-center max-sm:text-[0.5rem] max-md:w-[100%] tab-btn px-5 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition">
+      Booking Detail
+    </button>
+  </div>
+
+  <!-- Content Area -->
+  <div id="content" class="w-[100%] max-w-xl bg-white p-6 max-sm:p-0 rounded-xl shadow-lg border border-gray-200">
+    <!-- Default content (Profile) -->
+    <div id="profileSection" class="tab-content max-md:w-[100%]">
+      <h2 class="text-xl font-semibold text-gray-800 mb-4  max-sm:text-16px">Profile Information</h2>
+      <p><strong>Name:</strong> Zakir Rehman</p>
+      <p><strong>Email:</strong> zakir@example.com</p>
+      <p><strong>Gender:</strong> Male</p>
+    </div>
+
+    <div id="addressSection" class="tab-content hidden max-md:w-[100%]">
+      <h2 class="text-xl font-semibold text-gray-800 mb-4 max-sm:text-16px">Address Book</h2>
+      <p><strong>Home Address:</strong> 123 Main Street, Lahore</p>
+      <p><strong>City:</strong> Lahore</p>
+      <p><strong>Postal Code:</strong> 54000</p>
+    </div>
+
+    <div id="bookingSection" class="tab-content hidden max-md:w-[100%]">
+      <h2 class="text-xl font-semibold text-gray-800 mb-4 max-sm:text-16px">Booking Details</h2>
+      <p><strong>Recent Booking:</strong> 2 Nights at Islamabad Hotel</p>
+      <p><strong>Date:</strong> 10th - 12th October, 2025</p>
+      <p><strong>Status:</strong> Confirmed ✅</p>
+    </div>
+  </div>
+</div>
+ 
+</div>
+<script>
+  const tabs = {
+    profileBtn: "profileSection",
+    addressBtn: "addressSection",
+    bookingBtn: "bookingSection"
+  };
+
+  Object.keys(tabs).forEach(btnId => {
+    document.getElementById(btnId).addEventListener("click", () => {
+      // Hide all sections
+      document.querySelectorAll(".tab-content").forEach(sec => sec.classList.add("hidden"));
+
+      // Remove active style from all buttons
+      document.querySelectorAll(".tab-btn").forEach(btn => {
+        btn.classList.remove("bg-red-500", "text-white");
+        btn.classList.add("bg-gray-200", "text-gray-700");
+      });
+
+      // Show selected section
+      document.getElementById(tabs[btnId]).classList.remove("hidden");
+
+      // Highlight selected button
+      const activeBtn = document.getElementById(btnId);
+      activeBtn.classList.remove("bg-gray-200", "text-gray-700");
+      activeBtn.classList.add("bg-red-500", "text-white");
+    });
+  });
+</script>
